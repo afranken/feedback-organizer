@@ -22,6 +22,7 @@ import lombok.Data;
   private final List<Slot> slots;
 
   private final Set<Pair> pairs = new HashSet<>();
+  private static final TeamMember BREAK = new TeamMember("Coffee Break");
 
   /**
    * Shitty implementation for sorting pairs of team members to the available slots.
@@ -75,6 +76,11 @@ import lombok.Data;
   private Set<Pair> getPairs() {
     if (!pairs.isEmpty()) {
       return pairs;
+    }
+
+    //if team size is not even, one member needs to take a break on every slot.
+    if (people.size() % 2 != 0) {
+      people.add(BREAK);
     }
 
     for (TeamMember member1 : people) {
