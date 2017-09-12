@@ -19,7 +19,7 @@ class FeedbackOrganizer {
     Input input =
         MAPPER.readValue(FeedbackOrganizer.class.getResource("/input.json"), Input.class);
 
-    Map<Slot, List<Pair>> slotsToPairs = Organizer.organize(input);
+    Map<Slot, List<Pair>> slotsToPairs = input.organize();
     logger.info("Meeting output: {}", slotsToPairs);
     Map<String, Object> rootValue = new HashMap<>();
     rootValue.put("slotsToPairs", slotsToPairs);
