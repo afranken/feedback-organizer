@@ -1,12 +1,26 @@
 package com.github.afranken.feedback;
 
 import java.util.Objects;
-import lombok.Data;
 
-@Data(staticConstructor = "of")
 public class Pair {
-  private final TeamMember memberOne;
-  private final TeamMember memberTwo;
+  private TeamMember memberOne;
+  private TeamMember memberTwo;
+
+  public Pair() {
+  }
+
+  public Pair(TeamMember memberOne, TeamMember memberTwo) {
+    this.memberOne = memberOne;
+    this.memberTwo = memberTwo;
+  }
+
+  public TeamMember getMemberOne() {
+    return memberOne;
+  }
+
+  public TeamMember getMemberTwo() {
+    return memberTwo;
+  }
 
   public String getRenderedName() {
     return String.join(" : ", memberOne.getName(), memberTwo.getName());

@@ -10,20 +10,41 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import lombok.Data;
 
-@Data class Input {
+class Input {
   @JsonProperty
-  private final List<Room> rooms;
-
-  @JsonProperty
-  private final List<TeamMember> people;
+  private List<Room> rooms;
 
   @JsonProperty
-  private final List<Slot> slots;
+  private List<TeamMember> people;
+
+  @JsonProperty
+  private List<Slot> slots;
 
   private final Set<Pair> pairs = new HashSet<>();
   private static final TeamMember BREAK = new TeamMember("Coffee Break");
+
+  public Input() {
+  }
+
+  Input(List<Room> rooms, List<TeamMember> people,
+      List<Slot> slots) {
+    this.rooms = rooms;
+    this.people = people;
+    this.slots = slots;
+  }
+
+  public List<Room> getRooms() {
+    return rooms;
+  }
+
+  public List<TeamMember> getPeople() {
+    return people;
+  }
+
+  public List<Slot> getSlots() {
+    return slots;
+  }
 
   /**
    * Uses the https://en.wikipedia.org/wiki/Round-robin_tournament algorithm as implemented
@@ -40,7 +61,7 @@ import lombok.Data;
     for (Slot slot : this.getSlots()) {
         List<Pair> pairsInSlot = new ArrayList<>();
         for (int i = 0; i < upperRow.size(); i++) {
-          pairsInSlot.add(Pair.of(upperRow.get(i), lowerRow.get(i)));
+          pairsInSlot.add(new Pair(upperRow.get(i), lowerRow.get(i)));
         }
       meetings.put(slot, pairsInSlot);
       lowerRow.add(upperRow.remove(upperRow.size() - 1));

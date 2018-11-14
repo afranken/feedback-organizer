@@ -14,8 +14,8 @@ class PairTest {
   @Test
   void testEquals() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(one, two);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(one, two);
 
     assertEquals(pair_ONE, pair_TWO);
   }
@@ -23,8 +23,8 @@ class PairTest {
   @Test
   void testHashcode() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(one, two);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(one, two);
 
     assertEquals(pair_ONE.hashCode(), pair_TWO.hashCode());
   }
@@ -32,8 +32,8 @@ class PairTest {
   @Test
   void testEquals_backwards() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(two, one);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(two, one);
 
     assertEquals(pair_ONE, pair_TWO);
   }
@@ -41,8 +41,8 @@ class PairTest {
   @Test
   void testHashcode_backwards() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(two, one);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(two, one);
 
     assertEquals(pair_ONE.hashCode(), pair_TWO.hashCode());
   }
@@ -50,8 +50,8 @@ class PairTest {
   @Test
   void testIsUnique() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(three, four);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(three, four);
 
     assertTrue(Pair.hasUniqueMembers(pair_ONE, pair_TWO));
   }
@@ -59,8 +59,8 @@ class PairTest {
   @Test
   void testIsUnique_false() {
 
-    Pair pair_ONE = Pair.of(one, two);
-    Pair pair_TWO = Pair.of(two, four);
+    Pair pair_ONE = new Pair(one, two);
+    Pair pair_TWO = new Pair(two, four);
 
     assertFalse(Pair.hasUniqueMembers(pair_ONE, pair_TWO));
   }

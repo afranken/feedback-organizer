@@ -1,12 +1,25 @@
 package com.github.afranken.feedback;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import lombok.Data;
 
-@Data
 public class TeamMember {
 
-  private final String name;
+  private String name;
+
+  public TeamMember() {
+  }
+
+  public TeamMember(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
   @JsonCreator
   static TeamMember teamMember(String name) {
